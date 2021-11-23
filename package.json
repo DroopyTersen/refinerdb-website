@@ -1,8 +1,7 @@
 {
+  "name": "refinerdb-website",
+  "description": "Documentation site for RefinerDB",
   "private": true,
-  "name": "remix-app-template",
-  "description": "",
-  "license": "",
   "scripts": {
     "build": "remix build",
     "dev": "remix watch",
