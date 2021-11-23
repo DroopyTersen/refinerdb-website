@@ -1,4 +1,4 @@
-import { setupRefinerDB } from "./active";
+import { setupRefinerDB } from "./setup";
 
 const rootElement = document.getElementById("app");
 const refinerDB = setupRefinerDB();

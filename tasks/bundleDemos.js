@@ -4,37 +4,40 @@ const path = require("path");
 let DEMOS_PATH = path.join(__dirname, "..", "app/features/sandpack/demos");
 
 let demoJSON = {};
+let CONFIG_FILENAME = "sandpack.json";
 
 let bundleDemo = async (slug) => {
-  let demoFolder = path.join(DEMOS_PATH, slug);
-  console.log(demoFolder);
-  let sandpackFiles = {};
-  let fileNames = await fs.readdir(demoFolder);
-  console.log(fileNames);
-  for (let i = 0; i < fileNames.length; i++) {
-    let filename = fileNames[i];
-    let fileContents = await fs.readFile(
-      path.join(demoFolder, filename),
-      "utf8"
-    );
-    let hidden = false;
-    let active = false;
-    if (filename.includes("active")) {
-      active = true;
+  try {
+    let demoFolder = path.join(DEMOS_PATH, slug);
+    console.log(demoFolder);
+    let fileNames = await fs.readdir(demoFolder);
+    console.log(fileNames);
+
+    let sandpackConfig = await fs
+      .readFile(path.join(demoFolder, CONFIG_FILENAME), "utf-8")
+      .then(JSON.parse);
+
+    for (let i = 0; i < fileNames.length; i++) {
+      let filename = fileNames[i];
+      if (filename !== CONFIG_FILENAME) {
+        let fileContents = await fs.readFile(
+          path.join(demoFolder, filename),
+          "utf8"
+        );
+        if (filename !== "index.html") {
+          filename = "/src/" + filename;
+        }
+        if (!sandpackConfig.files[filename]) {
+          sandpackConfig.files[filename] = {};
+        }
+        sandpackConfig.files[filename].code = fileContents;
+      }
     }
-    if (filename === "index.html" || filename.includes("hidden")) {
-      hidden = true;
-    }
-    if (filename !== "index.html") {
-      filename = "/src/" + filename;
-    }
-    sandpackFiles[filename] = {
-      code: fileContents,
-      active,
-      hidden,
-    };
+    demoJSON[slug] = sandpackConfig;
+  } catch (err) {
+    console.error("Unable to parse", slug);
+    console.log(err);
   }
-  demoJSON[slug] = sandpackFiles;
 };
 let bundleCodeDemos = async () => {
   try {

@@ -16,5 +16,5 @@ export interface SandpackSetup {
 export const loader: LoaderFunction = async (context) => {
   let slug = context?.params?.slug || "";
   let demo = demos[slug];
-  return { slug, folder: "blah", demo };
+  return { slug, demo };
 };

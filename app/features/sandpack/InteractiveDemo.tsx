@@ -5,8 +5,9 @@ import useAsyncData from "~/hooks/useAsyncData";
 const fetchDemoFiles = async (slug) => {
   return fetch("/sandpack/" + slug).then((res) => res.json());
 };
-export default function InteractiveEditor({ slug = "" }) {
+export default function InteractiveDemo({ slug = "" }) {
   let { data } = useAsyncData(fetchDemoFiles, [slug], null);
+  console.log("🚀 | InteractiveDemo | data", data);
 
   if (!data) {
     return null;
@@ -14,14 +15,7 @@ export default function InteractiveEditor({ slug = "" }) {
 
   return (
     <Sandpack
-      template="vanilla-ts"
-      files={data.demo}
-      customSetup={{
-        dependencies: {
-          refinerdb: "next",
-        },
-        entry: "index.html",
-      }}
+      {...data.demo}
       options={{
         editorHeight: 700,
         showLineNumbers: true,
