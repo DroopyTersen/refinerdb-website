@@ -1,4 +1,5 @@
 import { Link } from "remix";
+import { Logo } from "~/components/Logo";
 
 export function Layout({ children }: React.PropsWithChildren<{}>) {
   return (
@@ -6,7 +7,7 @@ export function Layout({ children }: React.PropsWithChildren<{}>) {
       <header className="remix-app__header">
         <div className="container remix-app__header-content">
           <Link to="/" title="Remix" className="remix-app__header-home-link">
-            <RemixLogo />
+            <Logo className="w-8 text-primary" />
           </Link>
           <nav aria-label="Main navigation" className="remix-app__header-nav">
             <ul>

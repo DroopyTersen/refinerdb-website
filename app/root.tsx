@@ -1,4 +1,5 @@
 import * as React from "react";
+import type { LinksFunction } from "remix";
 import {
   Links,
   LiveReload,
@@ -7,14 +8,8 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
-  Link,
-  NavLink,
 } from "remix";
-import type { LinksFunction } from "remix";
-
-import deleteMeRemixStyles from "~/styles/demos/remix.css";
 import globalStylesUrl from "~/styles/global.css";
-import darkStylesUrl from "~/styles/dark.css";
 import { Layout } from "./features/layouts/Layout";
 
 /**
@@ -28,12 +23,6 @@ import { Layout } from "./features/layouts/Layout";
 export let links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: globalStylesUrl },
-    {
-      rel: "stylesheet",
-      href: darkStylesUrl,
-      media: "(prefers-color-scheme: dark)",
-    },
-    { rel: "stylesheet", href: deleteMeRemixStyles },
     {
       rel: "stylesheet",
       href: "https://unpkg.com/@codesandbox/sandpack-react/dist/index.css",
@@ -56,15 +45,9 @@ export default function App() {
   );
 }
 
-function Document({
-  children,
-  title,
-}: {
-  children: React.ReactNode;
-  title?: string;
-}) {
+function Document({ children, title }: { children: React.ReactNode; title?: string }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="refinerdb">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -89,16 +72,11 @@ export function CatchBoundary() {
   switch (caught.status) {
     case 401:
       message = (
-        <p>
-          Oops! Looks like you tried to visit a page that you do not have access
-          to.
-        </p>
+        <p>Oops! Looks like you tried to visit a page that you do not have access to.</p>
       );
       break;
     case 404:
-      message = (
-        <p>Oops! Looks like you tried to visit a page that does not exist.</p>
-      );
+      message = <p>Oops! Looks like you tried to visit a page that does not exist.</p>;
       break;
 
     default:
@@ -127,8 +105,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
           <p>{error.message}</p>
           <hr />
           <p>
-            Hey, developer, you should replace this with what you want your
-            users to see.
+            Hey, developer, you should replace this with what you want your users to see.
           </p>
         </div>
       </Layout>

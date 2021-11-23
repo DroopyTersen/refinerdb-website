@@ -1,5 +1,4 @@
 import { Sandpack } from "@codesandbox/sandpack-react";
-
 import useAsyncData from "~/hooks/useAsyncData";
 
 const fetchDemoFiles = async (slug) => {
@@ -21,6 +20,7 @@ export default function InteractiveDemo({ slug = "" }) {
         showLineNumbers: true,
         showInlineErrors: true,
       }}
+      theme="monokai-pro"
     />
   );
 }
