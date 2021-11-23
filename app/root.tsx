@@ -10,6 +10,7 @@ import {
   useCatch,
 } from "remix";
 import globalStylesUrl from "~/styles/global.css";
+import layoutStylesUrl from "~/styles/layout.css";
 import { Layout } from "./features/layouts/Layout";
 
 /**
@@ -23,6 +24,7 @@ import { Layout } from "./features/layouts/Layout";
 export let links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: globalStylesUrl },
+    { rel: "stylesheet", href: layoutStylesUrl },
     {
       rel: "stylesheet",
       href: "https://unpkg.com/@codesandbox/sandpack-react/dist/index.css",
