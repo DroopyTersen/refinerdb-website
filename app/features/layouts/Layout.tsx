@@ -14,6 +14,9 @@ export function Layout({ children }: React.PropsWithChildren<{}>) {
                 <Link to="/">Home</Link>
               </li>
               <li>
+                <Link to="/sandpack">Sandpack</Link>
+              </li>
+              <li>
                 <Link to="/page-1">Page 1</Link>
               </li>
               <li>

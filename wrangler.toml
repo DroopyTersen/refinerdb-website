@@ -2,7 +2,7 @@ name = "remix-cloudflare-workers"
 type = "javascript"
 
 zone_id = ""
-account_id = ""
+account_id = "bfdf9c3d5020465d9dd2fa73937b29a6"
 route = ""
 workers_dev = true
 
