@@ -34,6 +34,10 @@ export let links: LinksFunction = () => {
       media: "(prefers-color-scheme: dark)",
     },
     { rel: "stylesheet", href: deleteMeRemixStyles },
+    {
+      rel: "stylesheet",
+      href: "https://unpkg.com/@codesandbox/sandpack-react/dist/index.css",
+    },
   ];
 };
 
