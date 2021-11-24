@@ -1091,10 +1091,12 @@ html {
 	filter: var(--tw-filter);
 }
 @import "./layout.css";
+
 .hover\:text-primary:hover {
 	--tw-text-opacity: 1;
 	color: hsla(var(--p) / var(--tw-text-opacity));
 }
+
 .hover\:opacity-100:hover {
 	opacity: 1;
 }
