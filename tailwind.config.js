@@ -1,12 +1,22 @@
 module.exports = {
   mode: "jit",
-  purge: ["./app/**/*.tsx", "./app/**/*.jsx", "./app/**/*.js", "./app/**/*.ts"],
-  darkMode: false, // or 'media' or 'class'
+  purge: [
+    "./app/**/*.tsx",
+    "./app/**/*.jsx",
+    "./app/**/*.js",
+    "./app/**/*.ts",
+    "./app/**/*.mdx",
+  ],
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {},
   },
   variants: {},
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("daisyui"),
+    require("@tailwindcss/typography"),
+  ],
   daisyui: {
     themes: [
       {
@@ -23,7 +33,7 @@ module.exports = {
           neutral: "#2c2a2e",
           "neutral-focus": "#383739",
           "neutral-content": "#ffffff",
-          "base-100": "#1d5262",
+          "base-100": "#2c4b54",
           "base-200": "#1b4855",
           "base-300": "#d1d5db",
           "base-content": "#ffffff",

@@ -5,48 +5,45 @@ interface NavigationProps {}
 
 export function Navigation({}: NavigationProps) {
   return (
-    <nav className="p-4 text-white">
-      <div className="py-4 flex gap-2 pl-4">
+    <nav className="px-4 text-white">
+      <div className="flex gap-2 py-4 pl-1">
         <Link
           to="/"
-          className="font-mono text-2xl opacity-90 hover:opacity-100 text-secondary flex items-center gap-2"
+          className="flex items-center gap-2 pt-2 font-mono text-3xl opacity-90 hover:opacity-100 text-secondary"
         >
-          <Logo className="w-6 opacity-70" />
-          <span className="">RefinerDB</span>
+          <Logo className="w-7 opacity-80" />
+          <span className="text-white">RefinerDB</span>
         </Link>
       </div>
       <NavSection title="Setup">
-        <NavItem to="#">Installation</NavItem>
-        <NavItem to="#">Quick Start</NavItem>
-        <NavItem to="/">Home</NavItem>
-        <NavItem to="/page-1">Page 1</NavItem>
-        <NavItem to="/page-2">Page 2</NavItem>
+        <NavItem to="/setup/installation">Installation</NavItem>
+        <NavItem to="/setup/quick-start">Quick Start</NavItem>
       </NavSection>
 
       <NavSection title="Basics">
-        <NavItem to="#">Using your data</NavItem>
-        <NavItem to="#">Indexes</NavItem>
-        <NavItem to="#">Querying</NavItem>
-        <NavItem to="#">Refiners</NavItem>
+        <NavItem to="/basics/data">Using your data</NavItem>
+        <NavItem to="/basics/indexes">Indexes</NavItem>
+        <NavItem to="basics/querying">Querying</NavItem>
+        <NavItem to="basics/refiners">Refiners</NavItem>
       </NavSection>
 
       <NavSection title="React">
-        <NavItem to="#">Intro</NavItem>
-        <NavItem to="#">RefinerDBProvider</NavItem>
-        <NavItem to="#">Display items</NavItem>
-        <NavItem to="#">Refine items</NavItem>
+        <NavItem to="/react/intro">Intro</NavItem>
+        <NavItem to="/react/refinerdbprovider">RefinerDBProvider</NavItem>
+        <NavItem to="/react/display-items">Display items</NavItem>
+        <NavItem to="/react/refine-items">Refine items</NavItem>
       </NavSection>
 
       <NavSection title="Examples">
-        <NavItem to="#">Github Repo Finder</NavItem>
-        <NavItem to="#">Movies & TV</NavItem>
-        <NavItem to="#">Dev.to Articles</NavItem>
-        <NavItem to="#">Rick & Morty</NavItem>
+        <NavItem to="/examples/repo-finder">Github Repo Finder</NavItem>
+        <NavItem to="/examples/movies">Movies & TV</NavItem>
+        <NavItem to="/examples/dev-to-articles">Dev.to Articles</NavItem>
+        <NavItem to="/examples/rick-and-morty">Rick & Morty</NavItem>
       </NavSection>
 
       <NavSection title="API Reference">
         <NavItem to="/reference/core-api">Core</NavItem>
-        <NavItem to="/reference/react-api">Core</NavItem>
+        <NavItem to="/reference/react-api">React</NavItem>
       </NavSection>
     </nav>
   );
@@ -55,8 +52,8 @@ export function Navigation({}: NavigationProps) {
 function NavSection({ children, title }) {
   return (
     <div className="py-4">
-      <h3 className="text-xl font-bold text-accent pl-4">{title}</h3>
-      <ul className="text-lg">{children}</ul>
+      <h3 className="pl-1 my-0 text-xl font-bold text-accent">{title}</h3>
+      <ul className="pl-0 m-0 text-lg">{children}</ul>
     </div>
   );
 }
@@ -64,11 +61,12 @@ function NavSection({ children, title }) {
 function NavItem({ children, to, isActive = false }) {
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: true });
-  console.log("🚀 | NavItem | match", to);
   return (
-    <li className="mt-1 text-base">
+    <li className="flex flex-col text-base">
       <Link
-        className={`opacity-80 hover:opacity-100 px-4 ${match ? "bg-primary" : ""}`}
+        className={`border-transparent opacity-80 hover:opacity-100 py-1 px-3 rounded text-white ${
+          match ? "bg-primary-focus opacity-100" : "hover:text-primary"
+        }`}
         to={to}
       >
         {children}

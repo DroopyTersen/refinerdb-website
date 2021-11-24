@@ -6,9 +6,13 @@ export function Layout({
   sidebar,
 }: React.PropsWithChildren<{ sidebar?: React.ReactNode }>) {
   return (
-    <div className="layout">
-      <header className="flex items-center px-8 py-4 bg-gray-100">Header</header>
-      <aside id="grid-left" className="grid-sidebar bg-base-200" title="Site Navigation">
+    <div className="layout bg-neutral-focus">
+      <header className="flex items-center px-8"></header>
+      <aside
+        id="grid-left"
+        className="sticky top-0 self-start h-screen overflow-y-auto grid-sidebar bg-neutral"
+        title="Site Navigation"
+      >
         <Navigation />
       </aside>
       <main id="grid-main" className="p-8">

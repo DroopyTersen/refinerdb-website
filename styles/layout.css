@@ -1,5 +1,6 @@
 body {
   --header-height: 3rem;
+  --header-height: 0;
   width: 100%;
   display: grid;
   height: 100vh;
@@ -25,8 +26,8 @@ header {
   height: 100%;
 }
 .grid-sidebar {
-  position: sticky;
-  top: 0;
+  /* position: sticky;
+  top: 0; */
 }
 #grid-left {
   grid-area: leftsidebar;

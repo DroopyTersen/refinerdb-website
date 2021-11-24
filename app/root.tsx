@@ -27,6 +27,10 @@ export let links: LinksFunction = () => {
     { rel: "stylesheet", href: layoutStylesUrl },
     {
       rel: "stylesheet",
+      href: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/monokai-sublime.min.css",
+    },
+    {
+      rel: "stylesheet",
       href: "https://unpkg.com/@codesandbox/sandpack-react/dist/index.css",
     },
   ];
@@ -62,6 +66,9 @@ function Document({ children, title }: { children: React.ReactNode; title?: stri
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
+
+        <script src="//unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script>
+        {/* <script>hljs.highlightAll();</script> */}
       </body>
     </html>
   );
